@@ -8,6 +8,9 @@ const burger = {
     },
     update: (id, cb) => {
         orm.update("burgers", id, cb);
+    },
+    add: (name, cb) => {
+        orm.add("burgers", name, cb);
     }
 };
 

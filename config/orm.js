@@ -14,6 +14,23 @@ const orm = {
             if (err) throw err;
             cb(result);
         });
+    },
+
+    add: (tableInput, val, cb) => {
+        connection.query(
+            "INSERT INTO " +
+                tableInput +
+                "(" +
+                "burger_name" +
+                ")" +
+                " VALUES (" +
+                val +
+                ");",
+            (err, result) => {
+                if (err) throw err;
+                cb(result);
+            }
+        );
     }
 };
 
