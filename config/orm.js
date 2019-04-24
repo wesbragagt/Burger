@@ -17,20 +17,11 @@ const orm = {
     },
 
     add: (tableInput, val, cb) => {
-        connection.query(
-            "INSERT INTO " +
-                tableInput +
-                "(" +
-                "burger_name" +
-                ")" +
-                " VALUES (" +
-                val +
-                ");",
-            (err, result) => {
-                if (err) throw err;
-                cb(result);
-            }
-        );
+        let queryStr = "INSERT INTO ?? (burger_name) VALUES(?)";
+        connection.query(queryStr, [tableInput, val], (err, result) => {
+            if (err) throw err;
+            cb(result);
+        });
     }
 };
 
