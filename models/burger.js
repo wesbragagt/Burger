@@ -5,6 +5,9 @@ const burger = {
         orm.all("burgers", res => {
             cb(res);
         });
+    },
+    update: (id, cb) => {
+        orm.update("burgers", id, cb);
     }
 };
 

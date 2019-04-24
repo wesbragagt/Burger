@@ -8,16 +8,12 @@ const orm = {
             cb(result);
         });
     },
-    selectWhere: (tableInput, colToSearch, valOfCol) => {
-        let queryStr = "SELECT * FROM ?? WHERE ?? = ?";
-        connection.query(
-            queryStr,
-            [tableInput, colToSearch, valOfCol],
-            function(err, result) {
-                if (err) throw err;
-                console.log(result);
-            }
-        );
+    update: (tableInput, condition, cb) => {
+        let queryStr = "UPDATE ?? SET devoured=true WHERE id=?";
+        connection.query(queryStr, [tableInput, condition], (err, result) => {
+            if (err) throw err;
+            cb(result);
+        });
     }
 };
 
