@@ -1,6 +1,13 @@
 const connection = require("./connection");
 
 const orm = {
+    all: (tableInput, cb) => {
+        let queryStr = "SELECT * FROM ??";
+        connection.query(queryStr, [tableInput], (err, result) => {
+            if (err) throw err;
+            cb(result);
+        });
+    },
     selectWhere: (tableInput, colToSearch, valOfCol) => {
         let queryStr = "SELECT * FROM ?? WHERE ?? = ?";
         connection.query(
@@ -14,4 +21,9 @@ const orm = {
     }
 };
 
-orm.selectWhere("burgers", "burger_name", "Deluxe");
+// ALL
+// CREATE
+// UPDATE
+
+// orm.all("burgers");
+module.exports = orm;
